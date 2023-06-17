@@ -10,7 +10,7 @@ color = "white"
 font = ImageFont.truetype("PlusJakartaSans-Bold.ttf", 30) # size of name
 font_karma = ImageFont.truetype("Inter-Black.ttf", 45)  #size of karma
 font_college = ImageFont.truetype("PlusJakartaSans-Medium.ttf", 18) #size of college
-total_score = {'434916213064466444': {'full_name': 'Muhammed R', 'karma': 12544, 'orgs': [ 'St Thomas Institute of Science and Technology']}, '739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']}, '821366753594310676': {'full_name': 'dhannu d', 'karma': 600, 'orgs': [None]}}
+total_score = {'434916213064466444': {'full_name': 'Muhammed R', 'karma': 12544, 'orgs': [ 'St Thomas Institute of Science and Technology']}, '739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']}, '821366753594310676': {'full_name': 'dhannu d', 'karma': 600, 'orgs': [None]}}
 x, y =96,290
 c = 1
 for discord_id, data in total_score.items():
@@ -62,21 +62,39 @@ for discord_id, data in total_score.items():
             draw.multiline_text(( x+135,y+150), name[0], fill=color, font=font_college, align="center")
     
     r = numerize.numerize(data["karma"])
-    draw.multiline_text(
-        ( x+25,y+27),
-        r,
-        fill=color,
-        font=font_karma,
-        align="left",
-    )
+if r == 6:
+    x_offset = 25
+    y_offset = 27
+elif r == 5:
+    x_offset = 25
+    y_offset = 27
+elif r == 4:
+    x_offset = 25
+    y_offset = 27
+elif r == 3:
+    x_offset = 50
+    y_offset = 54
+elif r == 2:
+    x_offset = 75
+    y_offset = 81
+else:
+    x_offset = 0
+    y_offset = 0
+
+draw.multiline_text(
+    (x + x_offset, y + y_offset),
+    r,
+    fill=color,
+    font=font_karma,
+    align="left",
+)
+
     c = c + 1
     x = x + 600
-    # j = j + 1
-    # if j % 3 == 0:
-    #     i = i + 1
-    #     j = 0
-    #     y = 66
-    #     x = x + 265
+    j = j + 1
+    if j % 3 == 0:
+        j = 0
+        x = x + 265
 out = BytesIO()
 background.save(out, format="PNG")
 background.show()
