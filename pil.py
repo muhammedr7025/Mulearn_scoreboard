@@ -62,24 +62,15 @@ for discord_id, data in total_score.items():
             draw.multiline_text(( x+135,y+150), name[0], fill=color, font=font_college, align="center")
     
     r = numerize.numerize(data["karma"])
-if r == 6:
-    x_offset = 25
-    y_offset = 27
-elif r == 5:
-    x_offset = 25
-    y_offset = 27
-elif r == 4:
-    x_offset = 25
-    y_offset = 27
-elif r == 3:
-    x_offset = 50
-    y_offset = 54
-elif r == 2:
-    x_offset = 75
-    y_offset = 81
-else:
-    x_offset = 0
-    y_offset = 0
+offsets = {
+    6: (25, 27),
+    5: (25, 27),
+    4: (25, 27),
+    3: (50, 54),
+    2: (75, 81),
+}
+
+x_offset, y_offset = offsets.get(len(r), (0, 0))
 
 draw.multiline_text(
     (x + x_offset, y + y_offset),
