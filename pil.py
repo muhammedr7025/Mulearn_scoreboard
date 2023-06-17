@@ -10,9 +10,10 @@ color = "white"
 font = ImageFont.truetype("PlusJakartaSans-Bold.ttf", 30) # size of name
 font_karma = ImageFont.truetype("Inter-Black.ttf", 45)  #size of karma
 font_college = ImageFont.truetype("PlusJakartaSans-Medium.ttf", 18) #size of college
-total_score = {'434916213064466444': {'full_name': 'Muhammed R', 'karma': 12544, 'orgs': [ 'St Thomas Institute of Science and Technology']}, '739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']}, '821366753594310676': {'full_name': 'dhannu d', 'karma': 600, 'orgs': [None]}}
+total_score = {'434916213064466444': {'full_name': 'Muhammed R', 'karma': 12544, 'orgs': [ 'St Thomas Institute of Science and Technology']},'434916213064466474': {'full_name': 'Muhammed R', 'karma': 12544, 'orgs': [ 'St Thomas Institute of Science and Technology']}, '739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']},'739008298430365717': {'full_name': 'Shaheen Hyder', 'karma': 12400, 'orgs': ['Globex Industries Checking The Woking DUh']}, '821366753594310676': {'full_name': 'dhannu d', 'karma': 600, 'orgs': [None]},}
 x, y =96,290
 c = 1
+j=0
 for discord_id, data in total_score.items():
     if c >= 13:
         break
@@ -62,23 +63,23 @@ for discord_id, data in total_score.items():
             draw.multiline_text(( x+135,y+150), name[0], fill=color, font=font_college, align="center")
     
     r = numerize.numerize(data["karma"])
-offsets = {
-    6: (25, 27),
-    5: (25, 27),
-    4: (25, 27),
-    3: (50, 54),
-    2: (75, 81),
-}
+    offsets = {
+        6: (25, 29),
+        5: (55, 29),
+        4: (85, 29),
+        3: (90, 29),
+        2: (100, 29),
+    }
 
-x_offset, y_offset = offsets.get(len(r), (0, 0))
+    x_offset, y_offset = offsets.get(len(r), (0, 0))
 
-draw.multiline_text(
-    (x + x_offset, y + y_offset),
-    r,
-    fill=color,
-    font=font_karma,
-    align="left",
-)
+    draw.multiline_text(
+        (x + x_offset, y + y_offset),
+        r,
+        fill=color,
+        font=font_karma,
+        align="left",
+    )
 
     c = c + 1
     x = x + 600
